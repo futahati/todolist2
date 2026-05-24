@@ -15,12 +15,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.contrib import admin
-from django.urls import path, include
-from users import views
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("", include("todos.urls")),  # 首頁不用打倒斜線
-    path("users/profile/", views.profile),  # flask倒斜線在前，Django倒斜線在後
+    path(
+        "", views.todo_list
+    ),  # 首頁不用打倒斜線；有名稱時，flask倒斜線在前，Django倒斜線在後
 ]
