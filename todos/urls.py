@@ -20,6 +20,7 @@ from . import views
 
 urlpatterns = [
     path(
-        "", views.todo_list
+        "", views.todo_list, name="todo-list"
     ),  # 首頁不用打倒斜線；有名稱時，flask倒斜線在前，Django倒斜線在後
+    path("delete/<int:id>/", views.todo_delete, name="todo-delete"),
 ]

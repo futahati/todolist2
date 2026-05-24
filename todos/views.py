@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Todo
 
 # from django.http import JsonResponse
@@ -10,3 +10,14 @@ def todo_list(request):
     print(todos)
 
     return render(request, "todos/list.html", {"todos": todos})
+
+
+def todo_delete(request, id):
+    try:
+        todo = Todo.objects.get(id=id)
+        print(todo)
+        todo.delete()
+    except:
+        print("無此ID")
+
+    return redirect("todo-list")

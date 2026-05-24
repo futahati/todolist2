@@ -9,6 +9,7 @@
 
 <body>
     <h1>代辦事項列表</h1>
+
     {% for todo in todos %}
     <div class="todo-field">
         <small class="created">建檔時間：{{todo.created}}</small>
@@ -28,8 +29,10 @@
             {% else %}
             ☆
             {% endif %}</span>
-        {% endfor %}
+        <a href="{% url 'todo-delete' todo.id %}">刪除</a>
+        <a href="">更新</a>
     </div>
+    {% endfor %}
 </body>
 
 </html>
