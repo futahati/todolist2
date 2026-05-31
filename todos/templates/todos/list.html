@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zn-tw">
 
 <head>
     <meta charset="UTF-8">
@@ -70,7 +70,7 @@
             ☆
             {% endif %}</span>
         <a href="{% url 'todo-delete' todo.id %}" onclick="return confirm('是否確定刪除？！')">刪除</a>
-        <a href=""></a>
+        <a href="{% url 'todo-update' todo.id %}">更新Todo</a>
     </div>
     {% endfor %}
 </body>
