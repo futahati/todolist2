@@ -1,78 +1,36 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TodoList</title>
+{% block head %}
 
-    <style>
-        .todo-field {
-            background-color: antiquewhite;
-            margin: 24px;
-            padding: 12px;
-            border-radius: 12px;
-            width: 400px;
-        }
+<title>代辦事項列表List</title>
 
-        .title {
-            margin-top: 12px;
-            font-size: 32px;
-        }
+{% endblock %}
 
-        .created {
-            background-color: cadetblue;
-            color: white;
-            border-radius: 6px;
-            padding: 3px;
-        }
+{% block content %}
 
-        .content {
-            border-radius: 12px;
-            color: rgb(170, 94, 94);
-            padding: 12px;
-        }
+<h1>代辦事項列表List</h1>
 
-        .completed {
-            margin-left: 12px;
-            color: blue;
-        }
-
-        .important {
-            margin-left: 12px;
-            color: red;
-        }
-    </style>
-
-</head>
-
-<body>
-    <a href="{% url 'todo-create' %}">新增Todo</a>
-    <h1>代辦事項列表</h1>
-
-    {% for todo in todos %}
-    <div class="todo-field">
-        <small class="created">建檔時間：{{todo.created}}</small>
-        <div class="title">{{todo.title}}</div>
-        {% if todo.content %}
-        <div class="content">內容：{{todo.content|linebreaks}}</div>
-        {% endif %}
-        <span class="completed">完成狀態：
-            {% if todo.completed %}
-            已完成
-            {% else %}
-            未完成
-            {% endif %}</span>
-        <span class="important">重要性：
-            {% if todo.important %}
-            ★★★
-            {% else %}
-            ☆
-            {% endif %}</span>
-        <a href="{% url 'todo-delete' todo.id %}" onclick="return confirm('是否確定刪除？！')">刪除</a>
-        <a href="{% url 'todo-update' todo.id %}">更新Todo</a>
-    </div>
-    {% endfor %}
-</body>
-
-</html>
+{% for todo in todos %}
+<div class="todo-field">
+    <small class="created">建檔時間：{{todo.created}}</small>
+    <div class="title">{{todo.title}}</div>
+    {% if todo.content %}
+    <div class="content">內容：{{todo.content|linebreaks}}</div>
+    {% endif %}
+    <span class="completed">完成狀態：
+        {% if todo.completed %}
+        已完成
+        {% else %}
+        未完成
+        {% endif %}</span>
+    <span class="important">重要性：
+        {% if todo.important %}
+        ★★★
+        {% else %}
+        ☆
+        {% endif %}</span>
+    <a href="{% url 'todo-delete' todo.id %}" onclick="return confirm('是否確定刪除？！')">刪除</a>
+    <a href="{% url 'todo-update' todo.id %}">更新Todo</a>
+</div>
+{% endfor %}
+{% endblock %}
