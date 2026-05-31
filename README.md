@@ -70,7 +70,14 @@
             - from users import views
             - urlpatterns = [path("admin/", admin.site.urls),path("", views.index),]
 
-
-- pip freeze > requirements.txt
-- pip install gunicorn
-- gunicorn core.wsgi:application
+- MySQL與部署上架
+```
+pip freeze > requirements.txt
+pip install gunicorn
+gunicorn core.wsgi:application
+pip install mysqlclient
+pip install dotenv
+from dotenv import load_dotenv
+load_dotenv()
+import os
+```
