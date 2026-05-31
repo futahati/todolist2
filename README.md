@@ -71,4 +71,6 @@
             - urlpatterns = [path("admin/", admin.site.urls),path("", views.index),]
 
 
-- 123
+- pip freeze > requirements.txt
+- pip install gunicorn
+- gunicorn core.wsgi:application
